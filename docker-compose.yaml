@@ -1,0 +1,12 @@
+version: '3'
+services:
+  # Node.js Application
+  app:
+    build: .
+    environment:
+      - PORT=3000
+    ports:
+      - "30026:3000"
+    command: bash -c "
+        npm install
+        && npm run start"
