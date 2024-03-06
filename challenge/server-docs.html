@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Server API Guidelines</title>
+  <link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+  <h1>JSON Server API Guidelines</h1>
+
+  <p>This document outlines guidelines for interacting with the JSON Server API, which consists of the following endpoints:</p>
+
+  <ul>
+    <li>https://brazil.harrispye.com/mock/posts: Contains 100 items.</li>
+    <li>https://brazil.harrispye.com/mock/comments: Contains 500 items.</li>
+    <li>https://brazil.harrispye.com/mock/users: Contains 10 items.</li>
+  </ul>
+
+  <h2>General Guidelines</h2>
+
+  <ul>
+    <li>All requests must be sent as application/json.</li>
+    <li>Responses will be in JSON format.</li>
+    <li>Ensure proper authentication and authorization mechanisms are in place if necessary.</li>
+  </ul>
+
+  <h2>Endpoints</h2>
+
+  <h3>GET /posts</h3>
+
+  <ul>
+    <li>Retrieves a list of posts.</li>
+    <li>Additional query parameters can be used for filtering, sorting, and pagination.</li>
+  </ul>
+
+  <h4>Request:</h4>
+
+  <pre><code>GET /posts</code></pre>
+
+  <h4>Response:</h4>
+
+  <pre><code>[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  },
+  // More posts
+]</code></pre>
+
+  <h3>POST /posts</h3>
+
+  <ul>
+    <li>Creates a new post.</li>
+    <li>Use the request body to specify the post data.</li>
+  </ul>
+
+  <h4>Request:</h4>
+
+  <pre><code>POST /posts
+Content-Type: application/json
+{
+  "title": "New Post",
+  "body": "This is a new post.",
+  "userId": 1
+}</code></pre>
+
+  <h4>Response:</h4>
+
+  <pre><code>{
+  "id": 101,
+  "title": "New Post",
+  "body": "This is a new post.",
+  "userId": 1
+  // Other post properties
+}</code></pre>
+
+  <h3>PUT /posts/:id</h3>
+
+  <ul>
+    <li>Updates an existing post.</li>
+    <li>Specify the post ID in the endpoint URL and provide the updated data in the request body.</li>
+  </ul>
+
+  <h4>Request:</h4>
+
+  <pre><code>PUT /posts/1
+Content-Type: application/json
+
+{
+  "title": "Updated Post",
+  "body": "This is an updated post."
+}</code></pre>
+
+  <h4>Response:</h4>
+
+  <pre><code>{
+  "id": 1,
+  "title": "Updated Post",
+  "body": "This is an updated post.",
+  "userId": 1
+  // Other post properties
+}</code></pre>
+
+  <h3>DELETE /posts/:id</h3>
+
+  <ul>
+    <li>Deletes a post with the specified ID.</li>
+  </ul>
+
+  <h4>Request:</h4>
+
+  <pre><code>DELETE /posts/1</code></pre>
+
+  <h4>Response:</h4>
+
+  <pre><code>{}</code></pre>
+
+  <p>Similar Guidelines for /comments and /users</p>
+  <p>Follow similar request and response patterns for the /comments and /users endpoints. Use the appropriate query parameters and request body structures as needed.</p>
+  <p>Refer to the <a href="https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#routes">JSON Server documentation</a> for more options and advanced usage.</p>
+</body>
+</html>
